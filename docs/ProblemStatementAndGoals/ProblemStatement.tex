@@ -46,20 +46,25 @@ part of the problem.  The problem is ``what'' you want to do, not ``how'' you
 want to do it.  The problem statement should be written in a way that is
 understandable to a non-technical audience.}
 
-\wss{We want to provide a system that can accept the Doppler output from an ultrasound machine, determine a measure of mean blood velocity from that signal, and provide a continuous output suitable for recording and analysis. The system should produce measurements that are sufficiently accurate and reliable for laboratory research use.}
+We want to provide a system that can accept the Doppler output from an ultrasound machine, determine a measure of mean blood velocity from that signal, and provide a continuous output suitable for recording and analysis. The system should produce measurements that are sufficiently accurate and reliable for laboratory research use.
 
 \subsection{Inputs and Outputs}
 
-\wss{The primary input to the system is the Doppler ultrasound audio signal representing blood flow within an artery.}
+The primary input to the system is the Doppler ultrasound audio signal representing blood flow within an artery.
  
-\wss{The primary output is a continuous signal representing mean blood velocity that can be recorded and analyzed using LabChart. The system should also provide sufficient information to allow researchers to verify that the resulting measurements are reasonable and reliable.}
+The primary output is a continuous signal representing mean blood velocity that can be recorded and analyzed using LabChart. The system should also provide sufficient information to allow researchers to verify that the resulting measurements are reasonable and reliable.
 
 \subsection{Stakeholders}
+
+The primary stakeholders are the researchers and laboratory staff who require MBV measurements for physiological research. The project supervisors and biomedical researchers are also stakeholders, as they will provide domain knowledge, define research requirements, and evaluate the system's results. Ultrasound operators are stakeholders because the system must work with the output produced by the laboratory's ultrasound equipment. Future research participants are indirect stakeholders because the system may eventually be used to obtain measurements during human research studies.
+
 
 \subsection{Environment}
 
 \wss{Hardware and Software Environment for the users.  The developer environment
 is summarized as part of the developer plan.}
+
+The system will operate in a laboratory environment alongside an existing Doppler ultrasound system and LabChart data acquisition software. Researchers will use the system to obtain continuous MBV measurements during physiological experiments. The system will require appropriate hardware for receiving the ultrasound audio output and producing a signal that can be recorded by LabChart.
 
 \section{Goals}
 
