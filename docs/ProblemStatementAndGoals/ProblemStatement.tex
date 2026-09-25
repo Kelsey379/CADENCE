@@ -41,7 +41,7 @@ reflection\\
 
 In the laboratory, Doppler ultrasound measurements can be used to study blood flow in arteries such as the brachial and femoral arteries. Previously, the laboratory used a Multigon system to process the audio output from an ultrasound machine and convert the Doppler signal into a voltage signal that could be continuously recorded and analyzed using LabChart.
 
-The existing Multigon system is no longer functional, creating a need for a modern replacement. Without a functioning system, researchers cannot readily convert the Doppler ultrasound output into a continuous measure of MBV using the laboratory's existing recording workflow.
+The existing Multigon system is no longer functional, creating a need for a modern replacement that will take an input of the ultrasound audio waves and create an output voltage signal in real time. Without a functioning system, researchers cannot readily convert the Doppler ultrasound output into a continuous measure of MBV (Mean Blood Velocity) using the laboratory's existing recording workflow, creating an obstacle in their path to collect data and continue their research.
 
 \subsection{Problem}
 
@@ -73,17 +73,17 @@ The system will operate in a laboratory environment alongside an existing Dopple
 
 \section{Goals}
 
-The primary goal of this project is to develop and validate a functional digital signal processing system that can derive mean blood velocity from the Doppler ultrasound audio output and provide a continuous signal compatible with LabChart.
+The primary goal of this project is to develop and validate a digital signal processing system that converts Doppler ultrasound audio into a continuous estimate of mean blood velocity (MBV), with an output suitable for recording and analysis in LabChart. The system will provide researchers with a modern and reliable alternative to the previously used Multigon system.
  
 The system goals are to:
  
 \begin{enumerate}
-\item Receive and process the audio output from a Doppler ultrasound system in real time.
-\item Investigate and implement appropriate signal-processing techniques for extracting information related to blood velocity.
-\item Calculate a continuous estimate of mean blood velocity from the processed Doppler signal.
-\item Generate an output signal that can be recorded and analyzed using LabChart.
-\item Formally validating the system's output against a ground truth, appropriate reference measurements or established methods.
-\item Provide documentation describing the system, its operation, and its limitations.
+    \item \textbf{Acquire and process Doppler ultrasound signals:} The system will acquire the audio output from the ultrasound equipment and process the signal continuously with a sampling rate and frequency range appropriate for the input signal.
+    \item \textbf{Extract blood-flow information from the Doppler signal:} The system shall apply and evaluate signal-processing techniques, including frequency-domain analysis, to identify Doppler frequency components associated with blood flow.
+    \item \textbf{Estimate mean blood velocity:} The system should convert the extracted Doppler frequency information into a continuous estimate of mean blood velocity using an established Doppler velocity estimation method.
+    \item \textbf{Provide a LabChart-compatible output:} The system shall generate a continuous output signal representing mean blood velocity that satisfies the electrical and signal requirements of the labs LabChart setup.
+    \item \textbf{Validate measurement accuracy:} Will evaluate the system against an appropriate reference measurement or established method to quantify the accuracy and reliability of its mean blood velocity estimates.
+    \item \textbf{Provide a usable and reproducible research tool:} The system will include documentation describing its operation, signal-processing pipeline, configuration, validation results, and known limitations so that researchers can reproduce and use the system in future studies.
 \end{enumerate}
 
 \section{Stretch Goals}
@@ -92,8 +92,12 @@ The system goals are to:
 % scope of the original project needs to be expanded.}
 
 Additional goals we'd hope to implement in CADENCE include but are not limited to the following:
-1. Using the same input signal from the ultrasound, we can apply different signal transformation algorithms to derive metrics other than just MBV, such as Peak systolic velocity (PSV), End-diastolic velocity (EDV), Pulsatility Index (PI), and Resistance Index (RI) to gain further insight into the research participant's cardiovascular health.
-2. Alongside the LabChart output, the system displays a real-time spectrogram (a color-coded time-frequency display) to provide a more insightful diagnostic trail for research purposes. 
+\begin{enumerate}
+    \item \textbf{Extend physiological measurements:} Using the same input signal from the ultrasound, we can apply different signal transformation algorithms to derive metrics other than just MBV, such as Peak systolic velocity (PSV), End-diastolic velocity (EDV), Pulsatility Index (PI), and Resistance Index (RI). This would increase the usefulness of CADENCE beyond mean blood velocity alone and provide researchers with additional measures for physiological analysis.
+    \item \textbf{Real-time signal visualization:} Alongside the LabChart output, provide a real-time spectrogram (a color-coded time-frequency display) to provide a more insightful diagnostic trail for research purposes, allowing them to visualize the frequency content and temporal characteristics of the Doppler signal during data collection. This would provide an additional means of assessing signal quality and interpreting the system's processing behaviour. It can also then be used by users who do not necessarily have LabChart.
+    \item \textbf{Modular signal-processing framework:} Design the signal-processing pipeline so that additional signal-processing algorithms and physiological measurements can be incorporated without redesigning the entire system. This would allow CADENCE to be extended for future research applications.
+    \item \textbf{AI-assisted signal analysis:} Explore the use of artificial intelligence or machine learning to analyze the processed Doppler signal and identify notable patterns or events in blood-flow measurements. For example, the system could detect significant changes or spikes in blood velocity and provide contextual information about the observed signal pattern. This could provide researchers with an additional layer of automated analysis and help identify features of interest for further investigation.
+\end{enumerate}
 
 \section{Custom Documents (CDs)}
 
