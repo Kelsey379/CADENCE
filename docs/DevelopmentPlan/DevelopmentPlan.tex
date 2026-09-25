@@ -111,43 +111,117 @@ for deadlines.}
 
 \section{Proof of Concept Demonstration Plan}
 
-What is the main risk, or risks, for the success of your project?  What will you
-demonstrate during your proof of concept demonstration to convince yourself that
-you will be able to overcome this risk?
+Based on our project's scope and requirements, we have identified several
+potential risks that we plan to address. These include:
+
+\begin{itemize}
+\item \textbf{Signal acquisition:} The system relies on us being able to
+  accurately capture and interpret the Doppler ultrasound signal that the Vivid Q
+  ultrasound machine outputs. We currently expect this to be a pair of
+  quadrature-demodulated channels, which must be sampled simultaneously to
+  identify flow directions and velocities. If we are unable to get a clean
+  signal, or if there are unexpected voltage and noise levels, then we may need
+  to add some additional processing before being able to process and interpret
+  it as intended. This would have an impact on all further stages of the
+  project.
+\item \textbf{Mean Blood Velocity (MBV) estimation:} The MBV estimation process
+  has several steps. These include combining the I and Q channels into a single
+  complex signal, filtering out low-frequency, high-amplitude artifacts from
+  vessel wall motion, and then processing using Fourier transforms to split the
+  signal into forward and reverse flows. We will then need to estimate frequency
+  shifts from the signal spectrum and calculate the velocities from there. With
+  this, there are risks of noise, filter settings, aliasing, or spectral
+  broadening, which could occur at any phase and would make our velocity output
+  inaccurate. Because of this, we will be looking into several methods of doing
+  these steps and will be prototyping before implementation to ensure that we
+  have an accurate way of doing all of this.
+\item \textbf{Real-time performance and hardware:} Because the system needs to
+  work in real-time, we will need to make sure that we account for latency in
+  our signal processing and the hardware we use. For a POC demo we expect to be
+  running on a computer with recorded and simulated test data rather than
+  low-level real-time hardware, as we will still be prototyping, but this is
+  something we will need to account for in our design for the final system.
+\item \textbf{Output validation:} Because the output of this system is going to
+  be used for medical research, we need to ensure that it is accurate, both in
+  measurement and in timing. The lab's calibration procedures rely on this
+  signal, so we will need to test thoroughly against their old test and
+  calibration data to make sure that our solution is both precise and accurate.
+\end{itemize}
+
+These risks may change as we learn more about the equipment and the signal. Our
+proof of concept will demonstrate a minimal pipeline running on a computer,
+which will go from the Doppler I/Q input to an output voltage signal. This will
+allow us to validate our signal processing approach, while leaving the
+implementation of low-level hardware development and real-time digital signal
+processing for later in the development process. This proof of concept will
+confirm that our signal processing steps are accurate and produce the desired
+output, and we will ensure that this is correct before moving on to the
+real-time and hardware aspects.
 
 \section{Expected Technology}
 
-\wss{What programming language or languages do you expect to use?  What external
-libraries?  What frameworks?  What technologies.  Are there major components of
-the implementation that you expect you will implement, despite the existence of
-libraries that provide the required functionality.  For projects with machine
-learning, will you use pre-trained models, or be training your own model?  }
-
-\wss{The implementation decisions can, and likely will, change over the course
-of the project.  The initial documentation should be written in an abstract way;
-it should be agnostic of the implementation choices, unless the implementation
-choices are project constraints.  However, recording our initial thoughts on
-implementation helps understand the challenge level and feasibility of a
-project.  It may also help with early identification of areas where project
-members will need to augment their training.}
-
-Topics to discuss include the following:
+Our technology choices listed below are based on what we currently know about
+the project, and we may see them change as we learn more about the signal and
+equipment in the following weeks. Our plan is to develop this system in two
+stages. The first will be some high-level processing to ensure that our
+approach is correct and to develop our proof of concept. The next stage will
+involve moving the validated process on to hardware to run in real-time. Below
+are the technologies we expect to use during both of these stages:
 
 \begin{itemize}
-\item Specific programming language
-\item Specific libraries
-\item Pre-trained models
-\item Specific linter tool (if appropriate)
-\item Specific unit testing framework
-\item Investigation of code coverage measuring tools
-\item Specific plans for Continuous Integration (CI), or an explanation that CI
-  is not being done
-\item Specific performance measuring tools (like Valgrind), if
-  appropriate
-\item Tools you will likely be using?
+\item \textbf{Programming Languages:} We plan to use Python for our initial
+  prototyping, analysis, and proof of concept, as it allows us to easily test
+  different signal processing methods and procedures, and visualize our
+  results. The final product, which runs low-level on its own hardware, will be
+  written in C or C++, since microcontrollers like the Teensy cannot run Python
+  and we need efficient code to process the signal in real-time, consistent
+  with the project requirements.
+\item \textbf{Libraries:} During the POC phase, we expect to use a number of
+  Python libraries such as NumPy and SciPy for signal processing, filtering, and
+  transforms. Matplotlib will be used to visualize our traces and signals
+  before, during, and after each step of the signal processing. For the
+  real-time system, we will use whichever libraries are compatible with the
+  hardware we select. One current proposed idea is to use a Teensy 4.1 board
+  with an external DAC. In this case, we would use the Teensy Audio Library to
+  capture the stereo input, along with ARM's CMSIS-DSP library for the complex
+  transforms and filtering.
+\item \textbf{Hardware:} We expect to use some analog circuitry to connect to
+  the Doppler input and filter out interference before it is digitized, as well
+  as a commercial off-the-shelf board that supports DSP, such as a Teensy 4.1.
+  With this, we may use an external digital-to-analog converter (DAC), as well
+  as adapters to output to the physical wired connections that the PowerLab
+  8/30 device takes as input for LabChart. Further details of the hardware we
+  will use are still to be determined, as we are currently exploring our
+  options.
+\item \textbf{Linting and Formatting:} We plan to use Pylint to lint our code
+  during the proof of concept phase, and Black for Python formatting. Later on,
+  in the final development stage when we shift to C or C++, we expect to use
+  Clang-Format, Clang-Tidy, and Cppcheck for our linting and formatting.
+\item \textbf{Testing:} We will use Pytest for our Python development and a
+  framework like Unity for C/C++ testing. Because our project also involves the
+  use of hardware, we will use LabChart output and an oscilloscope to verify the
+  final system output.
+\item \textbf{Continuous Integration:} We will use GitHub Actions to run the
+  linter and unit tests on every pull request. Since code that depends on
+  physical hardware cannot run in CI, we will keep the processing logic
+  separate from the hardware input and output code.
+\item \textbf{Version Control:} We will be using Git and GitHub for version
+  control, along with GitHub Issues and GitHub Projects for task tracking.
+\item \textbf{Development Environment:} We will use Visual Studio Code as our
+  main IDE for development as well as for our \LaTeX{} documentation.
+\item \textbf{Laboratory Equipment:} We will be using the Vascular Dynamics
+  Lab's hardware for some testing and integration, which includes a GE Vivid Q
+  ultrasound, a Multigon 500M Transcranial Doppler, a PowerLab 8/30 unit, and
+  the LabChart software for signal input, recording, comparison, and
+  validation.
+\item \textbf{Components Implemented Ourselves:} While we will be using
+  libraries for standard building blocks like Fourier transforms and filters in
+  both Python and C/C++, we plan to implement project-specific parts of the
+  signal processing ourselves. This may include arranging the input transform
+  and separating forward and reverse flow, designing the initial filter for the
+  lab's measurements, estimating the mean frequency from the spectrum,
+  converting the Doppler shift to velocity, and calibrating the final output.
 \end{itemize}
-
-\wss{git, GitHub and GitHub projects should be part of your technology.}
 
 \section{Use of AI and LLMs}
 
