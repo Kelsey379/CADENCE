@@ -108,17 +108,106 @@ instructor, can be modified over the course of the term.}
 
 \section*{Appendix --- Reflection}
 
-\wss{Not required for CAS 741}
+% \wss{Not required for CAS 741}
 
-\input{../Reflection.text}
+% \input{../Reflection.text}
 
 \begin{enumerate}
     \item What went well while writing this deliverable? 
+
+    For this deliverable, we found that identifying the core problem and user
+    needs was straightforward. The Vascular Dynamics Lab had an existing
+    Multigon machine that is broken and discontinued, and they need a
+    replacement. They told us clearly that they were looking for a system that
+    takes the ultrasound's Doppler audio and outputs a continuous mean blood
+    velocity voltage signal for their LabChart software to interpret. The lab
+    has been incredibly helpful in providing us with manuals, test data, and
+    time in the lab to better understand their system and how it works. They
+    also gave us ideas for stretch goals and requirements, and helped us
+    understand their primary user needs. We were also able to get help from
+    Dr. Von Mohrenschildt, who advised us on what information we need to gather
+    about the system's electronics and existing signals, which helped us
+    understand what approach we need to take with the project.
+
+    Within our team, we split up the work evenly, each taking on parts of the
+    problem statement, goals, and project research. When it came to determining
+    all of the technical details we needed, we met to research together, each
+    taking on specific elements or interfaces within the system. We also shared
+    responsibilities such as contacting supervisors and the lab to arrange
+    meetings, tracking the administrative tasks we needed to do, and organizing
+    our shared resources as a group.
+
+    We found that meeting with the lab and our supervisor early was one of our
+    best decisions. Seeing the equipment in person changed how we wrote the
+    problem statement because instead of describing a generic signal processing
+    tool, we were able to focus it on the specific input and output the lab
+    actually needs. It also helped us identify the lab's needs, along with the
+    information and context we needed early on, which gave us what we needed to
+    accurately plan our goals and development.
+
     \item What pain points did you experience during this deliverable, and how
     did you resolve them?
+
+    The biggest pain point we found for this deliverable was the number of
+    unknowns about the existing system our project aims to replace. Because it's
+    legacy hardware, there's little documentation for operating it, much less
+    technical details such as current and voltage draw, interface impedances,
+    signal formats and phase shifts, data bit depth, and other key details we
+    need to accurately determine our next steps. We addressed a lot of this by
+    going into the lab a couple of times to see the machine, watch some tests
+    being done, and see how the output looks. We haven't resolved all the
+    unknowns yet, so we wrote our goals around what the system needs to deliver
+    rather than around specs we haven't confirmed, and we will be updating these
+    as soon as we have confirmed answers. We're returning to the lab next week
+    to measure the remaining unknowns with a multimeter and oscilloscope, and
+    we'll update the documents based on what we find. A lot of this project is
+    new to our team, so we've had to do a lot of research and learning as we
+    go, and looking back we recognize that we may have also benefitted from
+    putting together a list of specific measurements to take before our first
+    lab visit instead of after.
+
+    One of the other pain points we experienced was the difference in domain
+    knowledge on both sides. The Vascular Dynamics Lab is an amazing resource on
+    the physiology side, but they don't have the technical engineering
+    background that we do. On the other hand, we've had a lot to learn about the
+    medical side of this project and its implications for our design. To bridge
+    this gap, when we visited the lab, we asked them to demonstrate to us how
+    they use the system, and we took notes on how it works, what readings they
+    get, and what may be required for us to provide. We also had a gap between
+    our current technical knowledge and what the project requires. Dr. Von
+    Mohrenschildt was a great help with this. When we met with him, he explained
+    key concepts and helped us see what we need for the project and how to
+    approach it. The main thing we learned is that asking specific questions got
+    us much better answers than general ones, so we plan to come to future
+    meetings with questions prepared ahead of time.
+
     \item How did you and your team adjust the scope of your goals to ensure
     they are suitable for a Capstone project (not overly ambitious but also of
     appropriate complexity for a senior design project)?
+
+    As our team looked further into the system we need to develop, it became
+    clear that we needed to adjust our goals to make sure they are feasible and
+    suitable for this capstone. Initially, we had ideas of providing other
+    outputs, such as peak systolic velocity, end-diastolic velocity, pulsatility
+    index, and resistance index, along with a real-time spectrogram display.
+    However, from being in the lab, examining the equipment, and speaking with
+    the lab group, it became clear that the core problem is complex enough on
+    its own. Most of these extra metrics can be derived from the same velocity
+    data, but each one would need its own implementation, testing, and
+    verification. That would pull time and effort away from getting the core
+    mean blood velocity output right. The lab also has ways of interpreting
+    these already, so the addition of these would add little to their current
+    research. Because this system will be used for medical research, an
+    accurate and reliable core output matters far more than extra features. We
+    adjusted our goals to prioritize system accuracy and reliability, along with
+    clear documentation and verification of correctness, so the system is fit
+    for research use and easy for the lab to operate. We haven't decided against
+    the additional metrics entirely, and we do have some stretch goals that we
+    aim to complete if the core output is validated with time to spare. We
+    believe this scope is appropriately challenging, because it involves
+    real-time signal processing, hardware interfacing, and validation against
+    real laboratory equipment, which are all relevant to the workforce and also
+    allow us to apply concepts learned in SFWRENG 3MX3, 3DX4, and 4AA4.
 \end{enumerate}  
 
 \end{document}
