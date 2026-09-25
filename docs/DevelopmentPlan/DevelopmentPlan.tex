@@ -106,12 +106,19 @@ All team members will contribute to development, testing, research, and document
 
 \section{Workflow Plan}
 
-\begin{itemize}
-	\item How will you be using git, including branches, pull request, etc.?
-	\item How will you be managing issues, including template issues, issue
-	classification, etc.?
-  \item Use of CI/CD
-\end{itemize}
+% \begin{itemize}
+%	\item How will you be using git, including branches, pull request, etc.?
+%	\item How will you be managing issues, including template issues, issue
+%	classification, etc.?
+%  \item Use of CI/CD
+%\end{itemize}
+
+The team will use Git and GitHub to manage source code, track issues, coordinate development, and house documentation for submission. The main branch will contain code that has been reviewed and is ready for integration. Team members will work on separate feature or bug-fix branches rather than making changes directly to main. Pull requests will be used to merge changes into main. Each pull request should describe the changes made, reference the relevant issue when applicable, and include information about testing performed. At least one other team member will review each pull request before it is merged. 
+
+Issues will be used to track development tasks, bugs, and other work that needs to be completed. Issues will include a clear description of the problem or task and, where appropriate, acceptance criteria or expected outcomes. Labels will be used to classify issues, such as feature, bug, hardware, testing, and documentation. Issues will be assigned to team members and used to track work throughout the project. Larger tasks may be divided into smaller issues so that progress can be monitored more easily. 
+
+The team will use GitHub Actions for continuous integration. Pull requests will automatically run linting, unit tests, and regression tests where applicable. Required checks will be configured so that pull requests that do not meet the team's testing and quality standards cannot be merged into the main branch. Continuous delivery will not be a major part of the project because the final system is intended to run on dedicated hardware rather than being deployed to a production server.
+
 
 \section{Project Decomposition and Scheduling}
 
