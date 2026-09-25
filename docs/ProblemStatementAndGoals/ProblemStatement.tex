@@ -18,25 +18,26 @@
 
 \begin{table}[hp]
 \caption{Revision History} \label{TblRevisionHistory}
-\begin{tabularx}{\textwidth}{llX}
+\begin{tabularx}{\textwidth}{l>{\raggedright\arraybackslash}p{0.3\textwidth}>{\raggedright\arraybackslash}X}
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
+2026-09-25 & Anam Khan, Haniya Kashif, Vivian Nguyen, Kelsey Rough, Hareem Salman
+& Initial version of the problem statement and goals: problem, inputs and
+outputs, stakeholders, environment, goals, stretch goals, custom documents, and
+reflection\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \section{Problem Statement}
 
-\wss{You should check your problem statement with the
-\href{https://smiths.github.io/capTemplate/Checklists/ProbState-Checklist.pdf}
-{problem statement checklist}}. 
+% \wss{You should check your problem statement with the
+% \href{https://smiths.github.io/capTemplate/Checklists/ProbState-Checklist.pdf}
+% {problem statement checklist}}. 
 
-\wss{You can change the section headings, as long as you include the required
-information.}
+% \wss{You can change the section headings, as long as you include the required
+% information.}
 
 In the laboratory, Doppler ultrasound measurements can be used to study blood flow in arteries such as the brachial and femoral arteries. Previously, the laboratory used a Multigon system to process the audio output from an ultrasound machine and convert the Doppler signal into a voltage signal that could be continuously recorded and analyzed using LabChart.
 
@@ -44,11 +45,11 @@ The existing Multigon system is no longer functional, creating a need for a mode
 
 \subsection{Problem}
 
-\wss{What problem are you trying to solve?  Why is it important? Do not talk
-about how you will solve the problem, only what the problem is.  AI is rarely
-part of the problem.  The problem is ``what'' you want to do, not ``how'' you
-want to do it.  The problem statement should be written in a way that is
-understandable to a non-technical audience.}
+% \wss{What problem are you trying to solve?  Why is it important? Do not talk
+% about how you will solve the problem, only what the problem is.  AI is rarely
+% part of the problem.  The problem is ``what'' you want to do, not ``how'' you
+% want to do it.  The problem statement should be written in a way that is
+% understandable to a non-technical audience.}
 
 We want to provide a system that will receive the Doppler audio output from an ultrasound machine, process the signal, and generate a continuous voltage output that can be recorded by LabChart for subsequent analysis of mean blood velocity.
 
@@ -65,8 +66,8 @@ The primary stakeholders are the researchers and laboratory staff who require MB
 
 \subsection{Environment}
 
-\wss{Hardware and Software Environment for the users.  The developer environment
-is summarized as part of the developer plan.}
+% \wss{Hardware and Software Environment for the users.  The developer environment
+% is summarized as part of the developer plan.}
 
 The system will operate in a laboratory environment alongside an existing Doppler ultrasound system and LabChart data acquisition software. Researchers will use the system to obtain continuous MBV measurements during physiological experiments. The system will require appropriate hardware for receiving the ultrasound audio output and producing a signal that can be recorded by LabChart.
 
@@ -87,8 +88,8 @@ The system goals are to:
 
 \section{Stretch Goals}
 
-\wss{Goals you hope to get to, but not necessary.  They are also helpful if the
-scope of the original project needs to be expanded.}
+% \wss{Goals you hope to get to, but not necessary.  They are also helpful if the
+% scope of the original project needs to be expanded.}
 
 Additional goals we'd hope to implement in CADENCE include but are not limited to the following:
 1. Using the same input signal from the ultrasound, we can apply different signal transformation algorithms to derive metrics other than just MBV, such as Peak systolic velocity (PSV), End-diastolic velocity (EDV), Pulsatility Index (PI), and Resistance Index (RI) to gain further insight into the research participant's cardiovascular health.
